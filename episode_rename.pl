@@ -30,7 +30,7 @@ episode_rename.pl -options [<file1> <file2>]
 -n            Don't strip filenames of characters hazardous to FAT. Not recommended.
 -y            Don't ask for normal renaming, assume yes
 -v            Script is verbose and will tell what it's renaming.
--e            Omit file extension
+-e            add file extension
 EOF
 
 }
@@ -203,8 +203,8 @@ SERIES: for my $file (@ARGV) {
     $newfilename =~ s/\s\s+/ /g;
     $newfilename =~ s/^\s+|\s+$//g;
 
-    # omit file extension
-    unless ($opt{'e'}) {
+    # add file extension
+    if ( defined $opt{'e'} ) {
 	    $newfilename .= '.' . lc($suffix);
     }
 
